@@ -1,4 +1,5 @@
 require "bundler/setup"
+require "ruboty"
 require "ruboty/ehon"
 
 RSpec.configure do |config|
