@@ -41,4 +41,13 @@ describe Ruboty::Handlers::Ehon do
       robot.receive(body: "#{robot.name} 絵本追加 #{ehon}")
     end
   end
+
+  describe "絵本リスト" do
+    it "絵本リストがないときはないって言う" do
+      expect(robot).to receive(:say).with(
+        hash_including(body: "絵本リストはまだないよ！追加してね！")
+      )
+      robot.receive(body: "#{robot.name} 絵本リスト")
+    end
+  end
 end
