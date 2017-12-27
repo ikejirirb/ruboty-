@@ -49,5 +49,16 @@ describe Ruboty::Handlers::Ehon do
       )
       robot.receive(body: "#{robot.name} 絵本リスト")
     end
+
+    it "絵本リストがあるときは愛想よく返事する" do
+      expect(robot).to receive(:say).with(
+        hash_including(body: "「#{ehon}」を追加したよ！")
+      )
+      robot.receive(body: "#{robot.name} 絵本追加 #{ehon}")
+      expect(robot).to receive(:say).with(
+        hash_including(body: ["わたしのワンピースは0回読みました。最後に読んだのは0日前です。"])
+      )
+      robot.receive(body: "#{robot.name} 絵本リスト")
+    end
   end
 end

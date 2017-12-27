@@ -1,3 +1,5 @@
+require "date"
+
 module Ruboty
   module Handlers
     class Ehon < Base
@@ -9,7 +11,7 @@ module Ruboty
 
       def add_ehon(message)
         title = message[:title]
-        created_at = Time.now.getlocal("+09:00")
+        created_at = Date.today
         updated_at = created_at
 
         if ehons.empty?
@@ -29,7 +31,10 @@ module Ruboty
         if ehons.empty?
           message.reply("絵本リストはまだないよ！追加してね！")
         else
-          message.reply(ehons)
+          reply = ehons.map do |e|
+            "#{e[:title]}は#{e[:count]}回読みました。最後に読んだのは#{(Date.today - e[:created_at]).numerator}日前です。"
+          end
+          message.reply(reply)
         end
       end
 
