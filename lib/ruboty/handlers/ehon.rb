@@ -26,7 +26,11 @@ module Ruboty
       end
 
       def show_ehon(message)
-        message.reply(ehons)
+        if ehons.empty?
+          message.reply("絵本リストはまだないよ！追加してね！")
+        else
+          message.reply(ehons)
+        end
       end
 
       def read_ehon(message)
