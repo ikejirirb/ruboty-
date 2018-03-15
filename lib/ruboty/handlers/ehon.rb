@@ -32,7 +32,7 @@ module Ruboty
           message.reply("絵本リストはまだないよ！追加してね！")
         else
           reply = ehons.map do |e|
-            "#{e[:title]}は#{e[:count]}回読みました。最後に読んだのは#{(Date.today - e[:created_at]).numerator}日前です。"
+            "#{e[:title]}は#{e[:count]}回読みました。最後に読んだのは#{(Date.today - e[:updated_at]).numerator}日前です。"
           end
           message.reply(reply)
         end
